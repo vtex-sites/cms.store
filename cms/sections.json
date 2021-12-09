@@ -285,7 +285,13 @@
                "items":{
                   "type":"object",
                   "title":"Package",
+
                   "properties":{
+                                                   "isRow":{
+                                 "title": "Orientation",
+                                 "description":"If true horizontal",
+                                 "type": "boolean"
+                              },
                      "package":{
                         "type":"array",
                         "maxItems":2,
@@ -330,7 +336,6 @@
          "properties":{
             "image":{
                "title":"Image",
-               "description":"Image",
                "type":"string",
                "widget":{
                   "ui:widget":"image-uploader"

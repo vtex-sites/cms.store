@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import type { Props as PageProps } from 'src/pages/index'
-import { Flex, Grid, Image } from 'theme-ui'
+import { Box, Flex, Grid, Image } from 'theme-ui'
 
 import Seo from './Seo'
 
@@ -32,8 +32,12 @@ function View(props: Props) {
             sections {
               name
               data {
+                image
                 banners {
-                  src
+                  package {
+                    src
+                  }
+                  isRow
                 }
               }
             }
@@ -50,37 +54,45 @@ function View(props: Props) {
       {/* Seo Components */}
       <Seo {...props} title={title} />
 
-      <Grid gap={2} columns={[3, '2fr 1fr 1fr']} sx={{ margin: '20px' }}>
-        <Flex sx={{ flexDirection: 'column', height: '100%' }}>
-          <Image
-            src={
-              query.allRestApiVCmsApiFaststoreHome.edges[0].node.sections[0]
-                .data.banners[0].src
+      <Flex>
+        <Flex sx={{ width: '60%' }}>Side Bar</Flex>
+        <Grid gap={2} columns={[2, '1fr 1fr']}>
+          {query.allRestApiVCmsApiFaststoreHome.edges[0].node.sections.map(
+            (section: any) => {
+              return section.name === 'FirstBanner' ? (
+                section.data.banners.map((banner: any, key: any) => {
+                  return (
+                    <Flex
+                      key={key}
+                      sx={
+                        banner.isRow
+                          ? { flexDirection: 'column' }
+                          : { flexDirection: 'row' }
+                      }
+                    >
+                      <Image
+                        src={banner.package[0].src}
+                        key={banner.package[0].src}
+                      />
+                      <Image
+                        src={banner.package[1].src}
+                        key={banner.package[1].src}
+                        sx={
+                          banner.isRow
+                            ? { marginTop: '20px' }
+                            : { marginLeft: '10px' }
+                        }
+                      />
+                    </Flex>
+                  )
+                })
+              ) : (
+                <> </>
+              )
             }
-          />{' '}
-          <Image
-            src={
-              query.allRestApiVCmsApiFaststoreHome.edges[0].node.sections[0]
-                .data.banners[1].src
-            }
-            sx={{ marginTop: '2.8%' }}
-          />{' '}
-        </Flex>
-        <Image
-          src={
-            query.allRestApiVCmsApiFaststoreHome.edges[0].node.sections[0].data
-              .banners[2].src
-          }
-          sx={{ width: '100%', paddingLeft: '5%' }}
-        />{' '}
-        <Image
-          src={
-            query.allRestApiVCmsApiFaststoreHome.edges[0].node.sections[0].data
-              .banners[3].src
-          }
-          sx={{ width: '100%', paddingLeft: '5%' }}
-        />
-      </Grid>
+          )}
+        </Grid>
+      </Flex>
 
       {/* Visual Sections */}
       <h1 className="absolute top-[-100px]">{title}</h1>
