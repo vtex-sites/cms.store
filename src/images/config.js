@@ -33,4 +33,24 @@ module.exports = {
       fitIn: true,
     },
   },
+  'carousel.desktop': {
+    sourceWidth: 3840,
+    aspectRatio: 3330 / 1850,
+    breakpoints: [1366, 1920, 3840],
+    layout: 'fullWidth',
+    backgroundColor: '#f0f0f0',
+    options: {
+      fitIn: false,
+    },
+  },
+  'carousel.mobile': {
+    sourceWidth: 720,
+    aspectRatio: 360 / 416,
+    breakpoints: [360, 480, 720],
+    layout: 'fullWidth',
+    backgroundColor: '#f0f0f0',
+    options: {
+      fitIn: false,
+    },
+  },
 }

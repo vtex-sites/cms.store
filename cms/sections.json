@@ -1,0 +1,63 @@
+[
+  {
+    "name": "Carousel",
+    "schema": {
+      "title": "Carousel",
+      "type": "object",
+      "properties": {
+        "allItems": {
+          "type": "array",
+          "items": {
+            "title": "Images",
+            "type": "object",
+            "properties": {
+              "desktop": {
+                "title": "Desktop",
+                "type": "string",
+                "widget": {
+                  "ui:widget": "image-uploader"
+                }
+              },
+              "mobile": {
+                "title": "Mobile",
+                "type": "string",
+                "widget": {
+                  "ui:widget": "image-uploader"
+                }
+              },
+              "alt": {
+                "title": "alt text",
+                "type": "string"
+              },
+              "href": {
+                "title": "Link",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "Shelf",
+    "schema": {
+      "title": "Shelf",
+      "type": "object",
+      "properties": {
+        "title": {
+          "name": "title",
+          "type": "string"
+        },
+        "items": {
+          "name": "Number of Products",
+          "type": "integer"
+        },
+        "collection": {
+          "name": "Collection ID",
+          "type": "string"
+        }
+      }
+    }
+  }
+]

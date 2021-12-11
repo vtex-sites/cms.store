@@ -1,3 +1,47 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Carousel */
+[data-store-carousel] {
+  @apply relative flex items-center;
+}
+
+[data-carousel-bullets] {
+  @apply absolute bottom-0 w-full flex justify-center ;
+}
+
+[data-store-button][data-arrow] {
+  @apply absolute text-gray-300;
+}
+
+[data-arrow="left"] {
+  @apply left-0;
+}
+
+[data-arrow="right"] {
+  @apply right-0;
+}
+
+/* Bullets */
+[data-store-bullets] {
+  @apply box-border py-2 justify-center flex;
+}
+
+[data-store-bullets] [data-bullet-item] {
+  @apply inline-block;
+}
+
+[data-store-bullets] [data-bullet-item][data-store-button] {
+  @apply box-border min-w-0 cursor-pointer inline-block rounded-full m-3 border-0 outline-none h-3 w-3 min-h-0 p-0;
+  @apply bg-secondary-300;
+}
+
+[data-store-bullets] [data-bullet-item][aria-selected="true"] {
+  @apply bg-secondary-500;
+}
+
+/* Skeleton */
+[data-store-skeleton] {
+  @apply animate-pulse rounded bg-gray-400;
+}
